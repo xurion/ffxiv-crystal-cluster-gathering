@@ -22,7 +22,7 @@ export const EorzeanTimeTracker = () => {
 
   return (
     <div
-      className={`absolute border-b-2 border-b-black border-dashed w-full`}
+      className={`absolute border-b-2 border-b-black border-dashed w-full z-10`}
       style={{ top: `calc(${top}% - 48px` }}
     />
   );
