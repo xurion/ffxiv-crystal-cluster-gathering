@@ -1,6 +1,6 @@
 import "./App.css";
 import { Category } from "./Category";
-import { earth, fire, lightning } from "./data";
+import { earth, fire, lightning, water } from "./data";
 
 export const App = () => {
   return (
@@ -11,6 +11,7 @@ export const App = () => {
         <Category category={earth} title="Earth" />
         <Category category={fire} title="Fire" />
         <Category category={lightning} title="Lightning" />
+        <Category category={water} title="Water" />
       </main>
     </>
   );
