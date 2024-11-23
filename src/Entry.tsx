@@ -27,6 +27,9 @@ export const Entry = ({ className, entry }: Props) => {
         />
         {entry.collectable && <img className="w-5" src={collectableIcon} />}
       </div>
+      <div className="absolute bottom-2 right-2">
+        Lv {entry.level} {Array.from({ length: entry.stars }).map(() => "★")}
+      </div>
     </Cell>
   );
 };
