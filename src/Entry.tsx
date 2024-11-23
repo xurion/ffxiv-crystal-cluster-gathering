@@ -1,5 +1,6 @@
 import { Cell } from "./Cell";
 import type { Entry as EntryDetails } from "./data";
+import collectableIcon from "./assets/collectable.webp";
 
 type Props = {
   className?: string;
@@ -12,8 +13,14 @@ export const Entry = ({ className, entry }: Props) => {
   }
 
   return (
-    <Cell className={className} height={entry.duration}>
+    <Cell
+      className={`relative${className ? ` ${className}` : ""}`}
+      height={entry.duration}
+    >
       {entry.name}
+      {entry.collectable && (
+        <img className="absolute right-2 top-2 w-4" src={collectableIcon} />
+      )}
     </Cell>
   );
 };

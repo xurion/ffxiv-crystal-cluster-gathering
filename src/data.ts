@@ -343,7 +343,7 @@ export const water: Entry[] = [
 
 export const wind: Entry[] = [
   {
-    collectable: false,
+    collectable: true,
     duration: 2,
     job: "BOT",
     level: 90,
@@ -387,7 +387,7 @@ export const wind: Entry[] = [
     zone: "Labyrinthos",
   },
   {
-    collectable: false,
+    collectable: true,
     duration: 4,
     job: "BOT",
     level: 90,
@@ -431,7 +431,7 @@ export const wind: Entry[] = [
     zone: "Yanxia",
   },
   {
-    collectable: false,
+    collectable: true,
     duration: 2,
     job: "BOT",
     level: 90,
