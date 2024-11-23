@@ -1,6 +1,6 @@
 type Item = {
   collectable: boolean;
-  duration: number;
+  duration: 1 | 2 | 3 | 4;
   job: "BOT" | "MIN";
   level: number;
   name: string;
@@ -12,7 +12,7 @@ type Item = {
 
 type Empty = {
   type: "empty";
-  duration: number;
+  duration: 1 | 2 | 3 | 4;
 };
 
 export type Entry = Item | Empty;

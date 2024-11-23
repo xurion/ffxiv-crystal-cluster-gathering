@@ -1,22 +1,19 @@
+import { Cell } from "./Cell";
 import type { Entry as EntryDetails } from "./data";
 
 type Props = {
+  className?: string;
   entry: EntryDetails;
 };
 
-export const Entry = ({ entry }: Props) => {
-  const height =
-    entry.duration === 1
-      ? "h-4"
-      : entry.duration === 2
-      ? "h-8"
-      : entry.duration === 3
-      ? "h-12"
-      : "h-16";
-
+export const Entry = ({ className, entry }: Props) => {
   if (entry.type === "empty") {
-    return <div className={height} />;
+    return <Cell height={entry.duration} />;
   }
 
-  return <div className={height}>{entry.name}</div>;
+  return (
+    <Cell className={className} height={entry.duration}>
+      {entry.name}
+    </Cell>
+  );
 };
