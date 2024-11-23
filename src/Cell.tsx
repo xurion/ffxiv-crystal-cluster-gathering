@@ -4,7 +4,6 @@ type Props = {
   children?: React.ReactNode;
   className?: string;
   height?: 1 | 2 | 3 | 4;
-  key?: number | string;
 };
 
 export const Cell = (props: Props) => {
@@ -22,7 +21,6 @@ export const Cell = (props: Props) => {
       className={`content-center p-1 text-center ${height}${
         props.className ? ` ${props.className}` : ""
       }`}
-      key={props.key}
     >
       {props.children}
     </div>
