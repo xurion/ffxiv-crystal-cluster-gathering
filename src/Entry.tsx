@@ -11,13 +11,21 @@ type Props = {
 
 export const Entry = ({ className, entry }: Props) => {
   if (entry.type === "empty") {
-    return <Cell height={entry.duration} />;
+    return (
+      <Cell
+        className="bg-slate-300 border-b-white border-b-4"
+        height={entry.duration}
+      />
+    );
   }
 
   return (
     <Cell
-      className={`relative${className ? ` ${className}` : ""}`}
+      className={`relative border-b-white border-b-4${
+        className ? ` ${className}` : ""
+      }`}
       height={entry.duration}
+      vAlign
     >
       {entry.name}
       <div className="absolute right-2 top-2">

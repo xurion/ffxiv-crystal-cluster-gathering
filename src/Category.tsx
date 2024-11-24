@@ -16,6 +16,7 @@ export const Category = (props: Props) => {
         className={`border-b-8 font-bold${
           props.titleClassName ? ` ${props.titleClassName}` : ""
         }`}
+        vAlign
       >
         {props.title}
       </Cell>

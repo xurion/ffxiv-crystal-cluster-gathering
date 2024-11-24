@@ -4,6 +4,7 @@ type Props = {
   children?: React.ReactNode;
   className?: string;
   height?: 1 | 2 | 3 | 4;
+  vAlign?: boolean;
 };
 
 export const Cell = (props: Props) => {
@@ -16,9 +17,11 @@ export const Cell = (props: Props) => {
       ? "h-48"
       : "h-12";
 
+  const vAlign = props.vAlign ? "content-center" : "content-top";
+
   return (
     <div
-      className={`content-center p-1 text-center ${height}${
+      className={`p-1 text-center ${vAlign} ${height}${
         props.className ? ` ${props.className}` : ""
       }`}
     >
