@@ -2,28 +2,32 @@ import { useState } from "react";
 import { useInterval } from "usehooks-ts";
 
 const getEorzeaDayProgress = () => {
-  const realTime = new Date(); // Current real-world time
-  const unixTime = realTime.getTime(); // Get Unix time in milliseconds
+  const realTime = new Date();
+  const unixTime = realTime.getTime();
 
-  // Eorzea time runs 20 times faster than real time
-  const eorzeaTime = (unixTime * 20) / 1000; // Convert ms to seconds and scale up
+  // Convert the real-world time into Eorzea time
+  const eorzeaTime = (unixTime / 1000) * (3600 / 175); // 3600 Eorzea seconds pass every 175 real seconds
 
-  const totalEorzeaSeconds = Math.floor(eorzeaTime) % (24 * 60 * 60); // Seconds since the start of the Eorzean day
-  const percentageThroughDay = (totalEorzeaSeconds / (24 * 60 * 60)) * 100; // Calculate percentage
+  // Calculate the total Eorzea seconds that have passed today
+  const totalEorzeaSeconds = Math.floor(eorzeaTime) % (24 * 60 * 60); // Seconds in an Eorzea day
 
-  return percentageThroughDay;
+  // Calculate the percentage of the day that has passed
+  const percentageThroughDay = (totalEorzeaSeconds / (24 * 60 * 60)) * 100;
+
+  return percentageThroughDay.toFixed(2); // Return the percentage to two decimal places
 };
 
 export const EorzeanTimeTracker = () => {
   const [top, setTop] = useState(getEorzeaDayProgress());
   useInterval(() => {
-    setTop(getEorzeaDayProgress());
+    const top = getEorzeaDayProgress();
+    setTop(top);
   }, 1000);
 
   return (
     <div
       className={`absolute border-b-2 border-b-black border-dashed w-full z-10`}
-      style={{ top: `calc(${top}% - 48px` }}
+      style={{ top: `${top}%` }}
     />
   );
 };
