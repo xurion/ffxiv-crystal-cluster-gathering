@@ -1,5 +1,6 @@
 {
   "name": "ffxiv-crystal-cluster-gathering",
+  "homepage": "https://xurion.github.io/ffxiv-crystal-cluster-gathering",
   "private": true,
   "version": "0.0.0",
   "type": "module",
