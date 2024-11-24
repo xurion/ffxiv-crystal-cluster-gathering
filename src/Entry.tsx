@@ -13,9 +13,12 @@ export const Entry = ({ className, entry }: Props) => {
   if (entry.type === "empty") {
     return (
       <Cell
-        className="bg-slate-300 border-b-white border-b-4"
+        className="bg-slate-200 border-b-white border-b-4 text-slate-400"
         height={entry.duration}
-      />
+        vAlign
+      >
+        None
+      </Cell>
     );
   }
 
@@ -35,8 +38,11 @@ export const Entry = ({ className, entry }: Props) => {
         />
         {entry.collectable && <img className="w-5" src={collectableIcon} />}
       </div>
-      <div className="absolute bottom-2 right-2">
-        Lv {entry.level} {Array.from({ length: entry.stars }).map(() => "★")}
+      <div className="absolute bottom-2 right-2 text-sm">
+        Lv{entry.level} {Array.from({ length: entry.stars }).map(() => "★")}
+      </div>
+      <div className="absolute bottom-2 left-2 text-xs text-left">
+        {entry.zone} ({entry.xy.join(", ")})
       </div>
     </Cell>
   );
