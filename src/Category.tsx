@@ -1,29 +1,42 @@
-import { Cell } from "./Cell";
-import { Entry as EntryDetails } from "./data";
-import { Entry } from "./Entry";
+import { Item as ItemDetails } from "./data";
+import { Item } from "./Item";
 
 type Props = {
-  category: EntryDetails[];
-  cellClassName?: string;
-  title: string;
-  titleClassName?: string;
+  activeCellClassName: string;
+  cellClassName: string;
+  ephemerals: ItemDetails[];
+  legendaries: ItemDetails[];
 };
 
-export const Category = (props: Props) => {
-  return (
-    <div className="w-1/5">
-      <Cell
-        className={`border-b-8 font-bold${
-          props.titleClassName ? ` ${props.titleClassName}` : ""
-        }`}
-        vAlign
-      >
-        {props.title}
-      </Cell>
-
-      {props.category.map((category, i) => (
-        <Entry className={props.cellClassName} entry={category} key={i} />
+export const Category = ({
+  activeCellClassName,
+  cellClassName,
+  ephemerals,
+  legendaries,
+}: Props) => (
+  <>
+    <div className="relative w-1/2">
+      {legendaries.map((legendaryItem, i) => (
+        <Item
+          activeClassName={activeCellClassName}
+          className={cellClassName}
+          duration={2}
+          item={legendaryItem}
+          key={i}
+        />
       ))}
     </div>
-  );
-};
+
+    <div className="relative w-1/2">
+      {ephemerals.map((ephemeralItem, i) => (
+        <Item
+          activeClassName={activeCellClassName}
+          className={cellClassName}
+          duration={4}
+          item={ephemeralItem}
+          key={i}
+        />
+      ))}
+    </div>
+  </>
+);
