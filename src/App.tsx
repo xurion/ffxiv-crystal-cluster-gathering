@@ -1,42 +1,62 @@
+import { useState } from "react";
 import "./App.css";
 import { Category } from "./Category";
+import { EorzeanTimeTracker } from "./EorzeanTimeTracker";
+import { Selector } from "./Selector";
 import { Times } from "./Times";
-import { earth, fire, lightning, water, wind } from "./data";
+import { earth, fire, ice, lightning, water, wind } from "./data";
+
+type Selection = typeof earth;
 
 export const App = () => {
+  const [selected, setSelected] = useState<Selection>(earth);
+  const [colour, setColour] = useState("bg-amber-100");
+  const [activeColour, setActiveColour] = useState("bg-amber-300");
+
   return (
-    <main className="flex">
+    <main className="flex h-full">
+      <EorzeanTimeTracker />
       <Times />
-      <Category
-        category={earth}
-        cellClassName="bg-amber-100"
-        title="Earth"
-        titleClassName="bg-amber-300"
-      />
-      <Category
-        category={fire}
-        cellClassName="bg-red-100"
-        title="Fire"
-        titleClassName="bg-red-300"
-      />
-      <Category
-        category={lightning}
-        cellClassName="bg-purple-300"
-        title="Lightning"
-        titleClassName="bg-purple-400"
-      />
-      <Category
-        category={water}
-        cellClassName="bg-blue-100"
-        title="Water"
-        titleClassName="bg-blue-300"
-      />
-      <Category
-        category={wind}
-        cellClassName="bg-green-100"
-        title="Wind"
-        titleClassName="bg-green-300"
-      />
+      <div className="flex gap-1 h-full relative w-full">
+        <Selector
+          onEarthSelect={() => {
+            setSelected(earth);
+            setColour("bg-amber-100");
+            setActiveColour("bg-amber-300");
+          }}
+          onFireSelect={() => {
+            setSelected(fire);
+            setColour("bg-red-100");
+            setActiveColour("bg-red-300");
+          }}
+          onIceSelect={() => {
+            setSelected(ice);
+            setColour("bg-blue-100");
+            setActiveColour("bg-blue-300");
+          }}
+          onLightningSelect={() => {
+            setSelected(lightning);
+            setColour("bg-purple-300");
+            setActiveColour("bg-purple-500");
+          }}
+          onWaterSelect={() => {
+            setSelected(water);
+            setColour("bg-blue-100");
+            setActiveColour("bg-blue-300");
+          }}
+          onWindSelect={() => {
+            setSelected(wind);
+            setColour("bg-green-100");
+            setActiveColour("bg-green-300");
+          }}
+        />
+        <Category
+          activeCellClassName={activeColour}
+          cellClassName={colour}
+          ephemerals={selected.ephemerals}
+          legendaries={selected.legendaries}
+        />
+      </div>
     </main>
   );
 };
