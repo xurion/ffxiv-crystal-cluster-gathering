@@ -46,7 +46,7 @@ export const Selector = ({
 
   return (
     <div
-      className={`absolute bottom-1 h-8 w-48 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-500 ${className}`}
+      className={`absolute bottom-2 h-8 w-48 left-1/2 -translate-x-1/2 z-10 transition-opacity duration-500 ${className}`}
     >
       <button className="h-8 w-8 p-0 inline-block" onClick={onEarthSelect}>
         <img src={earthIcon} />
